@@ -1,0 +1,12 @@
+,real data (10 s),simulated file (10 s),simulated (10 min)
+drift offset,0.0043,0.0065,0.0063
+drift amplitude,0.6468,0.6552,0.6458
+drift frequency (Hz),0.0908,0.0909,0.0908
+drift phase (rad),0.293,0.286,0.2942
+noise sd,0.2985,0.301,0.2986
+spike rate (Hz),4.2,4.2,4.2
+excite (extra spikes per spike),0.1384,0.1473,0.1569
+excite_tau (ms),27.0213,24.1281,27.8717
+spike amplitude,4.9904,4.987,4.9681
+spike amplitude spread,0.077,0.193,0.0932
+spike decay (ms),2.9438,2.8483,2.894
