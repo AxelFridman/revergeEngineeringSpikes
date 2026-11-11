@@ -92,9 +92,6 @@ simulated recordings (`python -m pytest comparison` checks it).
 | whiteness | lag-1 autocorrelation of the residual | 5 |
 
 Missing keys or wrong shapes give a score of 0. A time vector that doesn't match the reference costs 10%. The spike shape score uses the average over all spikes, so fitting the noise of single spikes doesn't raise it.
-
-**Results.** `python run_evaluations.py` runs the evaluator on every team's file, ours included. It writes one `.json` and one overlay `.png` per team to `evaluation_results/`, and the table to `evaluation_results/scores_table.csv`.
-
 ## Files
 
 | file | |

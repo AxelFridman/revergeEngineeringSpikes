@@ -1,8 +1,0 @@
-,file,final score,valid,fit,spike_detection,spike_shape,drift,noise,whiteness,spike F1,R2,t matches
-benji-qu,team_10_reconstruction.npz,96.68,True,0.966,1.0,0.895,0.952,1.0,1.0,1.0,0.8349,True
-ours (OAM),team_OAM_reconstruction.npz,96.57,True,0.973,1.0,0.877,0.947,1.0,1.0,1.0,0.8355,True
-Chlo3Cook,team_05_reconstruction.npz,96.55,True,0.966,1.0,0.895,0.944,1.0,1.0,1.0,0.8349,True
-danielkwork0,team_7_reconstruction.npz,95.78,True,0.965,1.0,0.841,0.947,1.0,1.0,1.0,0.8348,True
-Anandita06,team_3_reconstruction.npz,92.96,True,0.958,1.0,0.89,0.725,1.0,1.0,1.0,0.8347,True
-Abdulwaliy,team_Abdulwaliy_et_Eleni_reconstruction.npz,89.64,True,0.96,1.0,0.467,0.922,1.0,1.0,1.0,0.8343,True
-a15cardoso,team_03_reconstruction.npz,51.94,True,0.277,1.0,0.89,0.0,0.916,0.379,1.0,0.7702,False

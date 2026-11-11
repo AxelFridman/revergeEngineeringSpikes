@@ -1,3 +1,5 @@
 .ipynb_checkpoints/
 __pycache__/
 .pytest_cache/
+run_evaluations.py
+evaluation_results/
