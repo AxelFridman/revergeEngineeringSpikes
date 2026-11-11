@@ -1,0 +1,55 @@
+{
+  "reference_file": "spike_data.npz",
+  "candidate_file": "team_3_reconstruction.npz",
+  "validity": true,
+  "validity_checks": {
+    "all keys present": true,
+    "t shape (10000,), finite": true,
+    "drift shape (10000,), finite": true,
+    "spike_signal shape (10000,), finite": true,
+    "noise shape (10000,), finite": true,
+    "reconstruction shape (10000,), finite": true,
+    "spike_indices 1-d integers inside the recording": true,
+    "t equals the reference time vector": true,
+    "reconstruction = drift + spike_signal": true,
+    "reconstruction = drift + spike_signal + noise": false,
+    "spike_indices sorted, no duplicates": true
+  },
+  "validity_details": "passed",
+  "metrics": {
+    "n spikes reference": 42,
+    "n spikes candidate": 42,
+    "spike precision": 1.0,
+    "spike recall": 1.0,
+    "spike F1": 1.0,
+    "mean spike offset (samples)": 0.0,
+    "noise sd of recording (robust)": 0.31136141559729696,
+    "residual rms": 0.2990277517332291,
+    "residual rms / noise sd": 0.960387950316812,
+    "R2": 0.8347287438443527,
+    "residual after spikes rms (8 ms average)": 0.04489119206444208,
+    "residual at spike peak rms": 0.2803899838510166,
+    "residual slow part rms": 0.03024513734794242,
+    "candidate noise sd": 0.3005251335310073,
+    "candidate noise sd / noise sd": 0.9651970940410134,
+    "residual lag-1 autocorrelation": -0.01865302237963155,
+    "residual normality KS p": 0.9862347058841745
+  },
+  "scores": {
+    "fit": 0.9584481987327518,
+    "spike_detection": 1.0,
+    "spike_shape": 0.889557200927373,
+    "drift": 0.7245058563451786,
+    "noise": 1.0,
+    "whiteness": 1.0
+  },
+  "weights": {
+    "fit": 30,
+    "spike_detection": 25,
+    "spike_shape": 15,
+    "drift": 15,
+    "noise": 10,
+    "whiteness": 5
+  },
+  "final_score": 92.96
+}

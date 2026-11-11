@@ -60,6 +60,41 @@ simulated recordings (`python -m pytest comparison` checks it).
 
 ![comparison](figures/comparison.png)
 
+## Inter-team evaluation
+
+**Submission (`team_OAM_reconstruction.npz`, made by `python make_reconstruction.py`).**
+
+- **Model:** recording = drift + spike train + noise.
+  - drift = 0.0035 + 0.648 sin(2π·0.0908 t + 0.289)
+  - every spike jumps to its amplitude in one sample and decays as exp(-t/2.94 ms); mean amplitude 5.04, sd 0.20
+  - noise is white gaussian, sd 0.298
+- **Assumptions:** the drift is one sinusoid. All spikes have the same shape, and only the amplitude changes between spikes. The noise is independent of the spikes.
+- **Detection:** threshold of 5 robust sd on the recording minus a 0.5 s median filter, which finds 42 spikes. The peak sample is the spike start, because a spike reaches its full height in one sample.
+- **Reconstruction:**
+  1. Fit the spike shape on isolated spikes.
+  2. Fit the drift on the recording with the spikes removed.
+  3. Fit all spike amplitudes together with least squares, so overlapping spikes are handled.
+  4. Refit the drift without the fitted spikes.
+- **File contents:**
+  - `reconstruction` = `drift` + `spike_signal`.
+  - `noise` is a new realization with seed 42. It is not part of `reconstruction`, as the instructions ask.
+  - The residual has sd 0.298, the same as the noise, and R² = 0.836.
+
+**Evaluator (`evaluate_team.py`).** `evaluate(reference_file, candidate_file)` returns validity checks, metrics, an overlay figure and `final_score` (0 to 100). We only have the recording, so a reconstruction is judged by what it leaves behind: recording minus reconstruction should be white noise at the recording's noise level. Sub-scores and weights:
+
+| sub-score | what it measures | weight |
+|---|---|---|
+| fit | residual rms / noise sd | 30 |
+| spike detection | F1 of the spike starts against the reference detector (±2 samples) | 25 |
+| spike shape | average residual over the 8 ms after the reference spikes | 15 |
+| drift | 0.5 s moving average of the residual | 15 |
+| noise | sd of the `noise` array against the noise sd | 10 |
+| whiteness | lag-1 autocorrelation of the residual | 5 |
+
+Missing keys or wrong shapes give a score of 0. A time vector that doesn't match the reference costs 10%. The spike shape score uses the average over all spikes, so fitting the noise of single spikes doesn't raise it.
+
+**Results.** `python run_evaluations.py` runs the evaluator on every team's file, ours included. It writes one `.json` and one overlay `.png` per team to `evaluation_results/`, and the table to `evaluation_results/scores_table.csv`.
+
 ## Files
 
 | file | |
